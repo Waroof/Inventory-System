@@ -1,0 +1,174 @@
+/* Quantity Input Styles */
+.inventory-add input[type="number"] {
+    border-radius: 0rem; /* Match the rounded corners of other inputs */
+    border: 0.3rem solid #0056b3; /* Consistent border thickness and color */
+    
+    height: 20px; /* Padding for a consistent size */
+    width: 65px; /* Adjust width to align with the input's purpose */
+    text-align: left; /* Center-align text for better readability */
+    font-size: 15px; /* Consistent font size */
+    outline: none; /* Remove default outline */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease; /* Smooth focus transitions */
+}
+
+
+
+
+
+
+
+
+
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgba(231, 231, 231, 0.678);
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Header Styles */
+header {
+    background-color: #007BFF; /* Blue accent */
+    color: white;
+    text-align: center;
+    padding: 1.5rem; /* Scaled padding */
+}
+
+
+header h1 {
+    margin: 0;
+    font-size: 3rem; /* Scaled font size */
+}
+
+/* Main Content Styles */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2.25rem; /* Scaled padding */
+}
+
+/* Button Styles */
+.table-top {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.inventory-add {
+    display: inline-flex;
+    flex-direction: row;
+    gap: 0.75rem; /* Scaled gap */
+    justify-content: flex-end;
+    
+    margin-bottom: 0; /* Scaled margin */
+    align-items: center;
+}
+
+.inventory-search {
+    display: inline-flex;
+    flex-direction: row;
+    gap: 0.75rem; /* Scaled gap */
+    justify-content: flex-start;
+    align-items: flex-end;
+    margin-bottom: 1px; /* Scaled margin */
+}
+#insert{
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+.plusBtn {
+    width: 38.5px; /* Scaled width */
+    height: 38.5px; /* Scaled height */
+    font-size: 34px; /* Scaled font size */
+    color: white;
+    background-color: #007BFF; /* Blue accent */
+    border: none;
+    border-radius: 30px; /* Scaled border radius */
+    cursor: pointer;
+    transition: background-color 0.05s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#add-form, #search-form {
+    border-radius: 1.5rem; /* Scaled border radius */
+    border: 0.3rem solid #0056b3; /* Scaled border thickness */
+    padding: 0.75rem; /* Scaled padding */
+    width: 15rem; /* Scaled width */
+}
+
+#search-form {
+    width: 22.5rem; /* Scaled width */
+}
+
+#add-form:focus, #search-form:focus {
+    outline-color: #052b57;
+}
+
+.plusBtn:hover {
+    background-color: #0056b3; /* Darker blue for hover */
+}
+
+.plusBtn:active {
+    background-color: #052b57; /* Even darker blue for active */
+}
+
+/* Styles for the popup */
+.popup {
+    position: absolute;
+    background-color: #007BFF; /* Blue background */
+    color: white;
+    padding: 0.75rem 1.5rem; /* Scaled padding */
+    border-radius: 0.75rem; /* Scaled border radius */
+    font-size: 1.125rem; /* Scaled font size */
+    box-shadow: 0 0.3rem 0.75rem rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    animation: fade-in-out 2s;
+}
+
+/* Fade-in-out animation */
+@keyframes fade-in-out {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Inventory Table Styles */
+.inventory-table {
+    width: 90%; /* Responsive width */
+    margin-top: 1.5rem; /* Scaled margin */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table thead {
+    background-color: #007BFF; /* Blue background for headers */
+    color: white;
+}
+
+table th, table td {
+    border: 0.15rem solid #ccc; 
+    text-align: left;
+    padding: 1.125rem; 
+    font-size: 1.5rem; 
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f9f9f9; 
+}
+
+table tbody tr:hover {
+    background-color: rgba(0, 123, 255, 0.1); 
+}

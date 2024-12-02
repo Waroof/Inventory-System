@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Inventory System</title>
+    <link rel="stylesheet" href="inventory.css">
+</head>
+<body>
+    <header>
+        <h1>Rental Inventory</h1>
+    </header>
+    <main>
+        <!-- Inventory Table Section -->
+        <section class="inventory-table">
+            <div class="table-top">
+                <section class="inventory-search">
+                    <form>
+                        <input type="text" id="search-form" name="search-form" placeholder="Search"><br>
+                    </form>
+                </section>
+                <section class="inventory-add">
+                    <form id="insert">
+                        <input type="text" id="add-form" name="add-form" placeholder="Add item"><br>
+                        <input type="number" id="quantity-add" min="1" max="100" value=1>
+                        <button  class="plusBtn" id="add-item">+</button>
+                    </form>
+                        
+                    
+                </section>
+            </div>
+            <table>
+                
+                <thead>
+                    <tr id="table-headers">
+                        <td>ID</td>
+                        <td>Item</td>
+                        <td>Quantity</td>
+                        
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <script src="inventory.js"></script>
+</body>
+</html>
