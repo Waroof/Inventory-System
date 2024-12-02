@@ -39,10 +39,24 @@ app.post("/inventory",async(req,res)=>{
     }
 })
 
+app.put("/inventory",async(req,res)=>{
+    try{
+        const {id,name,quantity} = req.body
+    await sql
+    `UPDATE inventory
+    SET name=${name}, quantity=${quantity}
+    WHERE id=${id}`;
+    res.json({success:true})
+
+
+    }
+    catch(error){console.log(error)};
+
+})
 
 app.get("/inventory", async (req,res)=>{
     try{
-        const inventory = await sql `SELECT * FROM inventory`
+        const inventory = await sql `SELECT * FROM inventory ORDER by id`
         res.json(inventory);
     }
     catch(error){
