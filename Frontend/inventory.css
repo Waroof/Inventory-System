@@ -19,7 +19,9 @@
 
 
 
-
+#action-header{
+    width: 70px;
+}
 /* General Styles */
 body {
     font-family: Arial, sans-serif;
@@ -104,6 +106,15 @@ main {
     padding: 0.75rem; /* Scaled padding */
     width: 15rem; /* Scaled width */
 }
+
+.edit-form{
+    font-size: 20px;
+    border: 0px solid ; /* Scaled border thickness */
+    padding: 0.75rem; /* Scaled padding */
+    width: 15rem; /* Scaled width */
+}
+
+
 
 #search-form {
     width: 22.5rem; /* Scaled width */

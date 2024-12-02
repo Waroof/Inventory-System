@@ -25,9 +25,32 @@ function clearTable(){
     grabBodyId.innerHTML="";
 }
 
+async function deleteItem(id,row){
+    try{
+        const response = await fetch(`http://localhost:3005/inventory/${id}`,{
+            method:"DELETE"
+        });
+        if (response.ok){
+            row.remove()
+        }
+    }
+    catch(error){
+        console.log("This is the error: "+ error);
+    }
 
+}
 
-
+async function editItem(row){
+    const itemName = row.children[1].textContent;
+    const quantityNumber = row.children[2].textContent;
+    document.getElementById(row.id).innerHTML = 
+    `
+    <td>${row.id}</td>
+    <td><input class='edit-form' type="text" id="name-eidt" name="name-edit" minlength=3 value=${itemName}></td>
+    <td><input class='edit-form' type="number" id="quantity-edit" min="1" max="10000" value=${quantityNumber}></td>
+    <td><i class='fas fa-times' style="cursor:pointer;margin-right:25px;font-size:30px"></i><i style="font-size:30px" class='fas fa-check'></i></td>
+    `;
+}
 
 
 
@@ -41,21 +64,41 @@ function testTable(listObj) {
     //create new row for each object
     let newRow = document.createElement("tr");
     grabBodyId.appendChild(newRow);
-
+    newRow.id=obj.id;
     //create a data element for each of the key/values in the object
     let newId = document.createElement("td");
     let newItem = document.createElement("td");
     let newQuantity = document.createElement("td");
-
+    let actions = document.createElement("td");
+    
+    
+    
     //set the value of each new data
     newId.textContent = obj.id;
     newItem.textContent = obj.name;
     newQuantity.textContent = obj.quantity;
+    //add delete button
+    const trashIcon= document.createElement("i")
+    trashIcon.className="fas fa-trash";
+    trashIcon.style.cursor='pointer';
+    trashIcon.style.marginRight='30px'; 
+    trashIcon.addEventListener('click',() => deleteItem(obj.id, newRow))
+    actions.appendChild(trashIcon)
+
+    //add edit button
+    const editIcon =document.createElement("i");
+    editIcon.className="fas fa-edit";
+    editIcon.style.cursor='pointer';
+    editIcon.addEventListener('click',()=>editItem(newRow))
+    actions.appendChild(editIcon);
+
 
     //append it to the row
     newRow.appendChild(newId);
     newRow.appendChild(newItem);
     newRow.appendChild(newQuantity);
+    newRow.appendChild(actions);
+    
     }
 }
 
@@ -93,11 +136,8 @@ function handleSubmit(e) {
     }
 }
 
-addButton.addEventListener("click", (e) => {
-    showPopup();
-});
 
-addForm.addEventListener("keydown", handleSubmit);
+addForm.addEventListener("submit", handleSubmit);
 
 insert.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -116,8 +156,10 @@ insert.addEventListener("submit", async (e) => {
         })
         const data = await response.json()
         if (data){
-            clearTable()
-            generateTable(data);
+            showPopup();
+            clearTable();
+            const updatedTableData = await getInventory();
+            generateTable(updatedTableData);
             
         }
         

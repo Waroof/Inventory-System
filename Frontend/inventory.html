@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Inventory System</title>
     <link rel="stylesheet" href="inventory.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -21,8 +22,8 @@
                 </section>
                 <section class="inventory-add">
                     <form id="insert">
-                        <input type="text" id="add-form" name="add-form" placeholder="Add item"><br>
-                        <input type="number" id="quantity-add" min="1" max="100" value=1>
+                        <input type="text" id="add-form" name="add-form" minlength=3 placeholder="Add item"><br>
+                        <input type="number" id="quantity-add" min="1" max="10000" value=1>
                         <button  class="plusBtn" id="add-item">+</button>
                     </form>
                         
@@ -36,6 +37,7 @@
                         <td>ID</td>
                         <td>Item</td>
                         <td>Quantity</td>
+                        <td id="action-header">Actions</td>
                         
                     </tr>
                 </thead>

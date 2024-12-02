@@ -52,6 +52,18 @@ app.get("/inventory", async (req,res)=>{
 })
 
 
+app.delete("/inventory/:id", async (req,res)=>{
+    try{
+        const {id} = req.params
+        await sql `DELETE FROM inventory
+                    WHERE id=${id}`;
+        res.json({success:true});
+    }
+    catch(error){
+        console.log("This is the error: "+ error);
+    }
+
+})
 
 initializeDatabase().then(()=>{
     app.listen(3005,()=>{
