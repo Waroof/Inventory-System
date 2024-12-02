@@ -6,12 +6,16 @@ const quantityAdd = document.getElementById("quantity-add");
 const searchForm = document.getElementById("search-form");
 
 
+let TABLEDATA = [];
 
+async function initialize(){
+    TABLEDATA =await getInventory();
+    generateTable(TABLEDATA)
+}
 
+initialize()
 
-
-async function generateTable(){
-    const data =await getInventory();
+async function generateTable(data){
     testTable(data);
     
 }
@@ -33,7 +37,7 @@ function testTable(listObj) {
     const grabBodyId = document.getElementById("table-body");
 
   //cycle thru each object in the list
-    for (obj of listObj) {
+    for (let obj of listObj) {
     //create new row for each object
     let newRow = document.createElement("tr");
     grabBodyId.appendChild(newRow);
@@ -55,7 +59,8 @@ function testTable(listObj) {
     }
 }
 
-generateTable();
+
+
 
 // Function to display the popup
 function showPopup() {
@@ -112,7 +117,7 @@ insert.addEventListener("submit", async (e) => {
         const data = await response.json()
         if (data){
             clearTable()
-            generateTable();
+            generateTable(data);
             
         }
         
@@ -139,6 +144,11 @@ async function getInventory(){
     
 }
 
-searchForm.addEventListener("keydown",(e)=>{
-    const searchLetters = searchForm.value;
+searchForm.addEventListener("keyup",(e)=>{
+    const searchLetters = searchForm.value.toLowerCase();
+    const filterData = TABLEDATA.filter((row)=>{
+        return row.name.toLowerCase().includes(searchLetters);
+    })
+    clearTable();
+    generateTable(filterData);
 })
