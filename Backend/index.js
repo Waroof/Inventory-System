@@ -38,7 +38,7 @@ app.post("/inventory",async(req,res)=>{
         console.log("this is error: "+error)
     }
 })
-
+//create put endpoint
 app.put("/inventory",async(req,res)=>{
     try{
         const {id,name,quantity} = req.body
@@ -53,7 +53,7 @@ app.put("/inventory",async(req,res)=>{
     catch(error){console.log(error)};
 
 })
-
+//create get endpoint
 app.get("/inventory", async (req,res)=>{
     try{
         const inventory = await sql `SELECT * FROM inventory ORDER by id`
@@ -65,7 +65,7 @@ app.get("/inventory", async (req,res)=>{
 
 })
 
-
+//create delete endpoint
 app.delete("/inventory/:id", async (req,res)=>{
     try{
         const {id} = req.params
@@ -79,6 +79,7 @@ app.delete("/inventory/:id", async (req,res)=>{
 
 })
 
+//run
 initializeDatabase().then(()=>{
     app.listen(3005,()=>{
         console.log("Server running on port 3005");
